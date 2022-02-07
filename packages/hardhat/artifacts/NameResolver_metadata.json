@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.8.11+commit.d7f03943"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "node",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ReverseRegistrar_v2.sol": "NameResolver"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@ensdomains/ens-contracts/contracts/registry/ENS.sol": {
+			"keccak256": "0x942ef29bd7c0f62228aeb91879ddd1ba101f52a2162970d3e48adffa498f4483",
+			"urls": [
+				"bzz-raw://a8e1b0ff629872f6dca873007c0e6e97b7fff918374b90d5db2f35d41b214aed",
+				"dweb:/ipfs/QmPma68CFjidUB9LRVXZ7qtuKNfNUQSGzUUu8USfJVLdUV"
+			]
+		},
+		"ReverseRegistrar_v2.sol": {
+			"keccak256": "0x4e1fb3bca221061642ffa91321266d2ae818f08274c2fe692c441692d16c8819",
+			"urls": [
+				"bzz-raw://b074affc993adc97f42c2e4f2c404681bedd1da5ecea51706aa988d0de4d81d6",
+				"dweb:/ipfs/QmUR8uNiF93sgi5EXcURSgzw1AEAwZXmYk9LrUDnMBLT6E"
+			]
+		}
+	},
+	"version": 1
+}

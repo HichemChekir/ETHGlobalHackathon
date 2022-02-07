@@ -1,0 +1,110 @@
+{
+	"compiler": {
+		"version": "0.8.11+commit.d7f03943"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract ENS",
+						"name": "_ens",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "addresses",
+						"type": "address[]"
+					}
+				],
+				"name": "getNames",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "r",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "The `constructor` takes ENS registry address"
+				},
+				"getNames(address[])": {
+					"notice": "Read only function to return ens name only if both forward and reverse resolution are set     *"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ReverseRecords_v2.sol": "ReverseRecords"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@ensdomains/ens-contracts/contracts/registry/ENS.sol": {
+			"keccak256": "0x942ef29bd7c0f62228aeb91879ddd1ba101f52a2162970d3e48adffa498f4483",
+			"urls": [
+				"bzz-raw://a8e1b0ff629872f6dca873007c0e6e97b7fff918374b90d5db2f35d41b214aed",
+				"dweb:/ipfs/QmPma68CFjidUB9LRVXZ7qtuKNfNUQSGzUUu8USfJVLdUV"
+			]
+		},
+		"@ensdomains/resolver/contracts/Resolver.sol": {
+			"keccak256": "0xb992c6a78066be42d7e9b54d0e385e87267d7e229099ed6c857c9d9ace43995d",
+			"urls": [
+				"bzz-raw://02060fd6885ba535ebbb8e21428fd6576edaeee1a49530f779eb360fb2136148",
+				"dweb:/ipfs/QmPuTbif9CgybJr3ooV1rtZoA9pPL5wCreiLsDSGwX1jKa"
+			]
+		},
+		"Namehash.sol": {
+			"keccak256": "0x9e989520e958c9d60611ead9f824f5b3d9e3c67b609b11b0ccb85e20dffdfc39",
+			"urls": [
+				"bzz-raw://e4736e6eb52b01dcbefd9efc30dceea7d45ca7b03df7c570a429c8ec9ab87ef3",
+				"dweb:/ipfs/QmUr2J9anrzC7BenwPHAzTwxHRMSU5oNoSdiqB1ArxSyS6"
+			]
+		},
+		"ReverseRecords_v2.sol": {
+			"keccak256": "0x7779cab8ddba7c6deafe795ffdb9923d934653813af5e06d98f1e034dd7c6c7f",
+			"urls": [
+				"bzz-raw://bbec1826516e3d7f185c61522b331a197a20951d743570e6a931e6b21f971598",
+				"dweb:/ipfs/QmNoFoFYuDV7Njz7obaUG6BjNR4BpvFcpmvKDQKQ4Uz2As"
+			]
+		},
+		"ReverseRegistrar_v2.sol": {
+			"keccak256": "0x4e1fb3bca221061642ffa91321266d2ae818f08274c2fe692c441692d16c8819",
+			"urls": [
+				"bzz-raw://b074affc993adc97f42c2e4f2c404681bedd1da5ecea51706aa988d0de4d81d6",
+				"dweb:/ipfs/QmUR8uNiF93sgi5EXcURSgzw1AEAwZXmYk9LrUDnMBLT6E"
+			]
+		}
+	},
+	"version": 1
+}

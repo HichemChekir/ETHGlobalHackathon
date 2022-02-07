@@ -1,0 +1,233 @@
+{
+	"compiler": {
+		"version": "0.8.11+commit.d7f03943"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract ENS",
+						"name": "ensAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "contract NameResolver",
+						"name": "resolverAddr",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "ADDR_REVERSE_NODE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "claim",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "resolver",
+						"type": "address"
+					}
+				],
+				"name": "claimWithResolver",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "defaultResolver",
+				"outputs": [
+					{
+						"internalType": "contract NameResolver",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ens",
+				"outputs": [
+					{
+						"internalType": "contract ENS",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "node",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"claim(address)": {
+					"details": "Transfers ownership of the reverse ENS record associated with the      calling account.",
+					"params": {
+						"owner": "The address to set as the owner of the reverse record in ENS."
+					},
+					"returns": {
+						"_0": "The ENS node hash of the reverse record."
+					}
+				},
+				"claimWithResolver(address,address)": {
+					"details": "Transfers ownership of the reverse ENS record associated with the      calling account.",
+					"params": {
+						"owner": "The address to set as the owner of the reverse record in ENS.",
+						"resolver": "The address of the resolver to set; 0 to leave unchanged."
+					},
+					"returns": {
+						"_0": "The ENS node hash of the reverse record."
+					}
+				},
+				"constructor": {
+					"details": "Constructor",
+					"params": {
+						"ensAddr": "The address of the ENS registry.",
+						"resolverAddr": "The address of the default reverse resolver."
+					}
+				},
+				"node(address)": {
+					"details": "Returns the node hash for a given account's reverse records.",
+					"params": {
+						"addr": "The address to hash"
+					},
+					"returns": {
+						"_0": "The ENS node hash."
+					}
+				},
+				"setName(string)": {
+					"details": "Sets the `name()` record for the reverse ENS record associated with the calling account. First updates the resolver to the default reverse resolver if necessary.",
+					"params": {
+						"name": "The name to set for this address."
+					},
+					"returns": {
+						"_0": "The ENS node hash of the reverse record."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"ReverseRegistrar_v2.sol": "ReverseRegistrar"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@ensdomains/ens-contracts/contracts/registry/ENS.sol": {
+			"keccak256": "0x942ef29bd7c0f62228aeb91879ddd1ba101f52a2162970d3e48adffa498f4483",
+			"urls": [
+				"bzz-raw://a8e1b0ff629872f6dca873007c0e6e97b7fff918374b90d5db2f35d41b214aed",
+				"dweb:/ipfs/QmPma68CFjidUB9LRVXZ7qtuKNfNUQSGzUUu8USfJVLdUV"
+			]
+		},
+		"ReverseRegistrar_v2.sol": {
+			"keccak256": "0x4e1fb3bca221061642ffa91321266d2ae818f08274c2fe692c441692d16c8819",
+			"urls": [
+				"bzz-raw://b074affc993adc97f42c2e4f2c404681bedd1da5ecea51706aa988d0de4d81d6",
+				"dweb:/ipfs/QmUR8uNiF93sgi5EXcURSgzw1AEAwZXmYk9LrUDnMBLT6E"
+			]
+		}
+	},
+	"version": 1
+}
