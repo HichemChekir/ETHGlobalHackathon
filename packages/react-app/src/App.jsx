@@ -17,6 +17,7 @@ import Fortmatic from "fortmatic";
 // https://www.npmjs.com/package/ipfs-http-client
 // import { create } from "ipfs-http-client";
 import React, { useCallback, useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 import ReactJson from "react-json-view";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 //import Torus from "@toruslabs/torus-embed"
@@ -515,16 +516,45 @@ function App(props) {
   const [transferToAddresses, setTransferToAddresses] = useState({});
   const [minting, setMinting] = useState(false);
   const [count, setCount] = useState(1);
+  const [name, setName] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [major, setMajor] = useState("");
+  
 
+  
+
+
+  const nameChange = e => {
+    setName(e.target.value)
+  }
+
+  const birthChange = e => {
+    setBirthday(e.target.value)
+  }
+  const majorChange = e => {
+    setMajor(e.target.value)
+  }
+
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setName(event.target[0].value);
+    setMajor(event.target[2].value);
+   
+  }
   // the json for the nfts
   const json = {
     1: {
-      description: "It's actually a bison?",
+      description: major,
       external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
       image: "https://austingriffith.com/images/paintings/buffalo.jpg",
-      name: "Buffalo",
+      name: name,
+      birth : birthday,
+      
+
       attributes: [
         {
+          
           trait_type: "BackgroundColor",
           value: "green",
         },
@@ -538,108 +568,8 @@ function App(props) {
         },
       ],
     },
-    2: {
-      description: "What is it so worried about?",
-      external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-      image: "https://austingriffith.com/images/paintings/zebra.jpg",
-      name: "Zebra",
-      attributes: [
-        {
-          trait_type: "BackgroundColor",
-          value: "blue",
-        },
-        {
-          trait_type: "Eyes",
-          value: "googly",
-        },
-        {
-          trait_type: "Stamina",
-          value: 38,
-        },
-      ],
-    },
-    3: {
-      description: "What a horn!",
-      external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-      image: "https://austingriffith.com/images/paintings/rhino.jpg",
-      name: "Rhino",
-      attributes: [
-        {
-          trait_type: "BackgroundColor",
-          value: "pink",
-        },
-        {
-          trait_type: "Eyes",
-          value: "googly",
-        },
-        {
-          trait_type: "Stamina",
-          value: 22,
-        },
-      ],
-    },
-    4: {
-      description: "Is that an underbyte?",
-      external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-      image: "https://austingriffith.com/images/paintings/fish.jpg",
-      name: "Fish",
-      attributes: [
-        {
-          trait_type: "BackgroundColor",
-          value: "blue",
-        },
-        {
-          trait_type: "Eyes",
-          value: "googly",
-        },
-        {
-          trait_type: "Stamina",
-          value: 15,
-        },
-      ],
-    },
-    5: {
-      description: "So delicate.",
-      external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-      image: "https://austingriffith.com/images/paintings/flamingo.jpg",
-      name: "Flamingo",
-      attributes: [
-        {
-          trait_type: "BackgroundColor",
-          value: "black",
-        },
-        {
-          trait_type: "Eyes",
-          value: "googly",
-        },
-        {
-          trait_type: "Stamina",
-          value: 6,
-        },
-      ],
-    },
-    6: {
-      description: "Raaaar!",
-      external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-      image: "https://austingriffith.com/images/paintings/godzilla.jpg",
-      name: "Godzilla",
-      attributes: [
-        {
-          trait_type: "BackgroundColor",
-          value: "orange",
-        },
-        {
-          trait_type: "Eyes",
-          value: "googly",
-        },
-        {
-          trait_type: "Stamina",
-          value: 99,
-        },
-      ],
-    },
+   
   };
-
   const mintItem = async () => {
     // upload to ipfs
     const uploaded = await ipfs.add(JSON.stringify(json[count]));
@@ -684,49 +614,43 @@ function App(props) {
               YourCollectibles
             </Link>
           </Menu.Item>
-          <Menu.Item key="/transfers">
-            <Link
-              onClick={() => {
-                setRoute("/transfers");
-              }}
-              to="/transfers"
-            >
-              Transfers
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/ipfsup">
-            <Link
-              onClick={() => {
-                setRoute("/ipfsup");
-              }}
-              to="/ipfsup"
-            >
-              IPFS Upload
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/ipfsdown">
-            <Link
-              onClick={() => {
-                setRoute("/ipfsdown");
-              }}
-              to="/ipfsdown"
-            >
-              IPFS Download
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/debugcontracts">
-            <Link
-              onClick={() => {
-                setRoute("/debugcontracts");
-              }}
-              to="/debugcontracts"
-            >
-              Debug Contracts
-            </Link>
-          </Menu.Item>
+         
         </Menu>
         <Switch>
           <Route exact path="/">
+
+          <div style={{ width: 200, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
+                        <form onSubmit={handleSubmit}>
+                          <label> Student's Name:
+                            <input
+                              type="text" 
+                              name="text"
+                              value={name}
+                              onChange={nameChange}
+                               />
+                          </label>
+
+                          <label> Student's birthdate:
+                            <input
+                              type="text" 
+                              name="text"
+                              value={birthday}
+                              onChange={birthChange}
+                               />
+                          </label>
+                          <label> Student's major
+                            <input
+                              type="text" 
+                              name="text"
+                              value={major}
+                              onChange={majorChange}
+                               />
+                          </label>
+                          <input type="submit" />
+                        </form>
+
+              </div>
+
             <div style={{ width: 640, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
               <Button
                 disabled={minting}
@@ -739,6 +663,9 @@ function App(props) {
                 MINT NFT
               </Button>
             </div>
+
+           
+
             <div style={{ width: 640, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
               <List
                 bordered
@@ -757,17 +684,15 @@ function App(props) {
                         <div>
                           <img src={item.image} style={{ maxWidth: 150 }} />
                         </div>
-                        <div>{item.description}</div>
+                        <div>
+                          Major :{item.description}</div>
+                        
                       </Card>
 
                       <div>
-                        owner:{" "}
-                        <Address
-                          address={item.owner}
-                          ensProvider={mainnetProvider}
-                          blockExplorer={blockExplorer}
-                          fontSize={16}
-                        />
+                      
+
+                    
                         <AddressInput
                           ensProvider={mainnetProvider}
                           placeholder="transfer to address"
@@ -778,6 +703,8 @@ function App(props) {
                             setTransferToAddresses({ ...transferToAddresses, ...update });
                           }}
                         />
+                       
+                                              
                         <Button
                           onClick={() => {
                             console.log("writeContracts", writeContracts);
@@ -794,112 +721,24 @@ function App(props) {
             </div>
           </Route>
 
-          <Route path="/transfers">
-            <div style={{ width: 600, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
-              <List
-                bordered
-                dataSource={transferEvents}
-                renderItem={item => {
-                  return (
-                    <List.Item key={item[0] + "_" + item[1] + "_" + item.blockNumber + "_" + item.args[2].toNumber()}>
-                      <span style={{ fontSize: 16, marginRight: 8 }}>#{item.args[2].toNumber()}</span>
-                      <Address address={item.args[0]} ensProvider={mainnetProvider} fontSize={16} /> =&gt;
-                      <Address address={item.args[1]} ensProvider={mainnetProvider} fontSize={16} />
-                    </List.Item>
-                  );
-                }}
-              />
-            </div>
-          </Route>
+       
 
-          <Route path="/ipfsup">
-            <div style={{ paddingTop: 32, width: 740, margin: "auto", textAlign: "left" }}>
-              <ReactJson
-                style={{ padding: 8 }}
-                src={yourJSON}
-                theme="pop"
-                enableClipboard={false}
-                onEdit={(edit, a) => {
-                  setYourJSON(edit.updated_src);
-                }}
-                onAdd={(add, a) => {
-                  setYourJSON(add.updated_src);
-                }}
-                onDelete={(del, a) => {
-                  setYourJSON(del.updated_src);
-                }}
-              />
-            </div>
-
-            <Button
-              style={{ margin: 8 }}
-              loading={sending}
-              size="large"
-              shape="round"
-              type="primary"
-              onClick={async () => {
-                console.log("UPLOADING...", yourJSON);
-                setSending(true);
-                setIpfsHash();
-                const result = await ipfs.add(JSON.stringify(yourJSON)); // addToIPFS(JSON.stringify(yourJSON))
-                if (result && result.path) {
-                  setIpfsHash(result.path);
-                }
-                setSending(false);
-                console.log("RESULT:", result);
-              }}
-            >
-              Upload to IPFS
-            </Button>
-
-            <div style={{ padding: 16, paddingBottom: 150 }}>{ipfsHash}</div>
-          </Route>
-          <Route path="/ipfsdown">
-            <div style={{ paddingTop: 32, width: 740, margin: "auto" }}>
-              <Input
-                value={ipfsDownHash}
-                placeHolder="IPFS hash (like QmadqNw8zkdrrwdtPFK1pLi8PPxmkQ4pDJXY8ozHtz6tZq)"
-                onChange={e => {
-                  setIpfsDownHash(e.target.value);
-                }}
-              />
-            </div>
-            <Button
-              style={{ margin: 8 }}
-              loading={sending}
-              size="large"
-              shape="round"
-              type="primary"
-              onClick={async () => {
-                console.log("DOWNLOADING...", ipfsDownHash);
-                setDownloading(true);
-                setIpfsContent();
-                const result = await getFromIPFS(ipfsDownHash); // addToIPFS(JSON.stringify(yourJSON))
-                if (result && result.toString) {
-                  setIpfsContent(result.toString());
-                }
-                setDownloading(false);
-              }}
-            >
-              Download from IPFS
-            </Button>
-
-            <pre style={{ padding: 16, width: 500, margin: "auto", paddingBottom: 150 }}>{ipfsContent}</pre>
-          </Route>
-          <Route path="/debugcontracts">
-            <Contract
-              name="YourCollectible"
-              signer={userSigner}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-              contractConfig={contractConfig}
-            />
-          </Route>
+         
+          
+         
         </Switch>
       </BrowserRouter>
 
       <ThemeSwitch />
+
+      <script>
+        
+      </script>
+      <div style={{ position: "fixed", textAlign: "right", right: 0, top: 0, padding: 10 }}>
+
+
+       </div>
+
 
       {/* 👨‍💼 Your account is in the top right with a wallet at connect options */}
       <div style={{ position: "fixed", textAlign: "right", right: 0, top: 0, padding: 10 }}>
@@ -917,45 +756,28 @@ function App(props) {
         {faucetHint}
       </div>
 
+
+
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
-          <Col span={8}>
-            <Ramp price={price} address={address} networks={NETWORKS} />
-          </Col>
-
-          <Col span={8} style={{ textAlign: "center", opacity: 0.8 }}>
-            <GasGauge gasPrice={gasPrice} />
-          </Col>
+        
           <Col span={8} style={{ textAlign: "center", opacity: 1 }}>
-            <Button
-              onClick={() => {
-                window.open("https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA");
-              }}
-              size="large"
-              shape="round"
-            >
-              <span style={{ marginRight: 8 }} role="img" aria-label="support">
-                💬
-              </span>
-              Support
-            </Button>
+            
           </Col>
         </Row>
 
         <Row align="middle" gutter={[4, 4]}>
-          <Col span={24}>
-            {
-              /*  if the local provider has a signer, let's show the faucet:  */
-              faucetAvailable ? (
-                <Faucet localProvider={localProvider} price={price} ensProvider={mainnetProvider} />
-              ) : (
-                ""
-              )
-            }
-          </Col>
+          
         </Row>
       </div>
+
+
+
+
+
+
+
     </div>
   );
 }
